@@ -7,7 +7,6 @@ import { useIsomorphicLayoutEffect } from "../utils";
 const sectionItems = ["projects", "experience", "about", "contact"];
 
 export default function Home() {
-  const heroEyebrow = useRef();
   const heroTitle = useRef();
   const heroSubtitle = useRef();
   const heroActions = useRef();
@@ -17,7 +16,6 @@ export default function Home() {
 
   useIsomorphicLayoutEffect(() => {
     const heroTargets = [
-      heroEyebrow.current,
       heroTitle.current,
       heroSubtitle.current,
       heroActions.current,
@@ -80,9 +78,9 @@ export default function Home() {
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 tablet:px-8">
           <button
             onClick={() => scrollToSection("home")}
-            className="link rounded-full border border-white/20 px-4 py-1 text-sm font-semibold tracking-wide text-white/90 transition hover:border-fuchsia-400/70 hover:text-white"
+            className="link bg-transparent text-2xl font-bold tracking-tight tablet:text-4xl"
           >
-            {data.name}
+            <span className="gradient-text">{data.name}</span>
           </button>
           <div className="hidden items-center gap-2 tablet:flex">
             {sectionItems.map((item) => (
@@ -111,16 +109,9 @@ export default function Home() {
           id="home"
           className="relative flex min-h-[78vh] flex-col justify-center py-16"
         >
-          <p
-            ref={heroEyebrow}
-            className="w-fit rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-violet-200"
-          >
-            Inspired by Ryvos-style product storytelling
-          </p>
-
           <h1
             ref={heroTitle}
-            className="mt-8 max-w-4xl text-4xl font-semibold leading-tight text-white tablet:text-6xl"
+            className="mt-2 max-w-4xl text-4xl font-semibold leading-tight text-white tablet:text-6xl"
           >
             {data.headerTaglineOne}
             <br />
@@ -192,7 +183,11 @@ export default function Home() {
                   <img
                     src={project.imageSrc}
                     alt={`${project.title} preview`}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    className={`h-full w-full transition duration-500 group-hover:scale-105 ${
+                      project.title === "Ryvos"
+                        ? "object-contain bg-[#090d18] p-8"
+                        : "object-cover"
+                    }`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#05060a] via-[#05060a]/40 to-transparent" />
                 </div>
