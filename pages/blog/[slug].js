@@ -1,79 +1,40 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { getPostBySlug, getAllPosts } from "../../utils/api";
-import Header from "../../components/Header";
-import ContentSection from "../../components/ContentSection";
-import Footer from "../../components/Footer";
 import Head from "next/head";
-import { useIsomorphicLayoutEffect } from "../../utils";
-import { stagger } from "../../animations";
-import Button from "../../components/Button";
-import BlogEditor from "../../components/BlogEditor";
-import { useRouter } from "next/router";
-import Cursor from "../../components/Cursor";
+import ReactMarkdown from "react-markdown";
+import Navbar from "../../components/shared/Navbar";
+import Footer from "../../components/shared/Footer";
 import data from "../../data/portfolio.json";
 
 const BlogPost = ({ post }) => {
-  const [showEditor, setShowEditor] = useState(false);
-  const textOne = useRef();
-  const textTwo = useRef();
-  const router = useRouter();
-
-  useIsomorphicLayoutEffect(() => {
-    stagger([textOne.current, textTwo.current], { y: 30 }, { y: 0 });
-  }, []);
-
   return (
-    <>
+    <div className="min-h-screen bg-background text-foreground">
       <Head>
         <title>{"Blog - " + post.title}</title>
         <meta name="description" content={post.preview} />
       </Head>
-      {data.showCursor && <Cursor />}
 
-      <div
-        className={`container mx-auto mt-10 ${
-          data.showCursor && "cursor-none"
-        }`}
-      >
-        <Header isBlog={true} />
-        <div className="mt-10 flex flex-col">
-          <img
-            className="w-full h-96 rounded-lg shadow-lg object-cover"
-            src={post.image}
-            alt={post.title}
-          ></img>
-          <h1
-            ref={textOne}
-            className="mt-10 text-4xl mob:text-2xl laptop:text-6xl text-bold"
-          >
-            {post.title}
-          </h1>
-          <h2
-            ref={textTwo}
-            className="mt-2 text-xl max-w-4xl text-darkgray opacity-50"
-          >
-            {post.tagline}
-          </h2>
-        </div>
-        <ContentSection content={post.content}></ContentSection>
-        <Footer />
-      </div>
-      {process.env.NODE_ENV === "development" && (
-        <div className="fixed bottom-6 right-6">
-          <Button onClick={() => setShowEditor(true)} type={"primary"}>
-            Edit this blog
-          </Button>
-        </div>
-      )}
+      <Navbar />
 
-      {showEditor && (
-        <BlogEditor
-          post={post}
-          close={() => setShowEditor(false)}
-          refresh={() => router.reload(window.location.pathname)}
+      <main className="mx-auto max-w-[1300px] px-6 py-16 tablet:py-24">
+        <img
+          className="h-96 w-full border-2 border-border object-cover shadow-brutal-sm"
+          src={post.image}
+          alt={post.title}
         />
-      )}
-    </>
+        <h1 className="mt-10 font-display text-[clamp(2rem,4vw,3rem)] font-normal tracking-[-0.02em]">
+          {post.title}
+        </h1>
+        <h2 className="mt-2 text-xl text-text-secondary">
+          {post.tagline}
+        </h2>
+        <div className="prose mt-10 max-w-none">
+          <ReactMarkdown>{post.content}</ReactMarkdown>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
   );
 };
 
