@@ -132,6 +132,8 @@
 /* ──────────────────────────────────────────────
    Base
    ────────────────────────────────────────────── */
+html, body { overflow-x: clip; }
+
 body {
   background: var(--color-background);
   color: var(--color-foreground);

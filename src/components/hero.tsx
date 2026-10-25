@@ -24,7 +24,7 @@ export function Hero() {
       <div className="grid-backdrop pointer-events-none absolute inset-0" />
       <div className="glow pointer-events-none absolute inset-0" />
 
-      <motion.div initial="hidden" animate="visible" className="relative mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_1.05fr]">
+      <motion.div initial="hidden" animate="visible" className="relative mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_1.05fr] [&>*]:min-w-0">
         <div>
           <motion.p custom={0} variants={fadeUp} className="label-mono">
             <span className="text-accent">●</span> {profile.role} · Zenalyst.ai · {profile.location}

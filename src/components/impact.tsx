@@ -6,7 +6,7 @@ import { impact } from "@/data/profile";
 export function Impact() {
   return (
     <section className="px-6 py-16">
-      <dl className="mx-auto grid max-w-6xl grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-4">
+      <dl className="mx-auto grid max-w-6xl grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-4 [&>*]:min-w-0">
         {impact.map((m, i) => (
           <motion.div
             key={m.label}

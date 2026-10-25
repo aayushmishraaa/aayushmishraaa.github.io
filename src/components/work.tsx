@@ -27,7 +27,7 @@ export function Work() {
                 <Tag
                   {...(w.href ? { href: w.href, target: "_blank", rel: "noopener noreferrer" } : {})}
                   tabIndex={0}
-                  className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-4 py-7 outline-none"
+                  className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-4 py-7 outline-none [&>*]:min-w-0"
                 >
                   <span className={`font-mono text-[12px] ${open ? "text-accent" : "text-text-muted"}`}>{String(i + 1).padStart(2, "0")}</span>
                   <span>

@@ -7,7 +7,7 @@ import { education, experience, skills } from "@/data/profile";
 export function Experience() {
   return (
     <section id="experience" className="px-6 py-24 lg:py-32">
-      <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[0.75fr_1.25fr]">
+      <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[0.75fr_1.25fr] [&>*]:min-w-0">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <p className="label-mono">{"// 01 — experience"}</p>
           <h2 className="mt-4 text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.05] tracking-[-0.04em]">
