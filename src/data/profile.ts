@@ -84,6 +84,15 @@ export const work: Work[] = [
     href: "https://ryvos.dev",
   },
   {
+    slug: "rinn",
+    name: "Rinn",
+    kicker: "game · Ryvos Interactive",
+    metric: "free demo out · solo-built",
+    body: "A narrative adventure in Unity set in a Kumaoni village across 2,000 years: shift eras with one key, solve puzzles whose cause is in one age and answer in the other. Art, animation, music and code by me.",
+    stack: ["Unity 6", "C#", "URP", "Blender"],
+    href: "https://interactive.ryvos.dev",
+  },
+  {
     slug: "zencontext",
     name: "ZenContext",
     kicker: "context layer · Zenalyst",
@@ -110,9 +119,9 @@ export const work: Work[] = [
   {
     slug: "mistengine",
     name: "MistEngine",
-    kicker: "graphics · side project",
+    kicker: "engine · Ryvos Interactive",
     metric: "60+ FPS · 100k+ polygons",
-    body: "A 3D engine from scratch in C++ and OpenGL with a custom rendering pipeline, memory pooling and spatial data structures.",
+    body: "A modular C++17 / OpenGL 4.6 engine: ECS core, PBR renderer with clustered lighting and SSR, Bullet physics, ImGui editor, Lua scripting and hot-loadable plugins.",
     stack: ["C++", "OpenGL", "GLSL"],
     href: "https://github.com/aayushmishraaa/MistEngine",
   },
